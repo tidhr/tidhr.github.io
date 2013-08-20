@@ -1,0 +1,242 @@
+/* CSS style sheet for NKO3 Project */
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+
+body {
+    font-family: 'Istok Web', Arial, sans-serif;
+    font-size: 15px;
+}
+
+.tidhrcontainer {
+    max-width: 1024px;
+    min-width: 500px;
+    margin: auto;
+    display: block;
+}
+
+.row-fluid [class*="span"]:first-child {
+    margin-left: 0%;
+}
+
+
+
+#top-wrapper {
+    height: 30px;
+    clear: both;
+    margin: auto;
+    max-width: 400px;
+    text-align: center;
+    display: block;
+}
+
+#top-wrapper p {
+    padding-top: 10px;
+}
+
+#headercontainer {
+    height: 255px;
+    display: block;
+}
+
+#wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -220px;
+}
+
+#push,
+#footerwrapper {
+  height: 220px;
+}
+
+#footer {
+    width: 100%;
+    background-color: #f5f5f5;
+    padding-top: 10px;
+}
+
+
+#footer p {
+    color: #808080;
+}
+
+.space {
+    clear: both;
+    width: 100%;
+}
+
+#newslist {
+    min-height: 200px;
+    margin: 0px;
+    height: 480px;
+    display: block;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#middlewrapper {
+    display: block;
+    padding-top: 0px;
+    margin-bottom: 40px;
+    margin: auto;
+/*    min-height: 520px; */
+    height:auto;
+    height: auto !important;
+    overflow: hidden;
+    padding-bottom: 160px;
+}
+
+#maincontainer {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#graph {
+    min-height: 380px;
+    height: 100%;
+    /*border: 1px solid #eee;
+    border-radius: 10px;*/
+    padding-top: 10px;
+    padding-left: 0px;
+    margin-left: 0px;
+    border-left: 1px solid #eee;
+}
+
+.headersearch {
+    margin: 0px 0px 0px 0px;
+}
+
+@media (max-width: 767px) {
+    #newslist {
+        width: 100%;
+    }
+    #graph {
+        display: none;
+        width: 0px;
+    }
+    #footer {
+      margin-left: -20px;
+      margin-right: -20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+}
+
+#bigtitle {
+    text-align: center;
+    display: block;
+    margin: auto;
+    max-width: 790px;
+}
+
+#bigtitle img {
+    padding: 0px;
+    padding-right: 10px;
+    margin-top: -30px;
+}
+
+#bigtitle h1 {
+    font-size: 9em;
+    letter-spacing: 4px;
+    font-family: 'Yanone Kaffeesatz', Arial, sans-serif;
+    line-height: 1em;
+}
+
+.likebutton {
+    margin-top: 5px;
+}
+
+.liketext {
+    padding-top: -5px;
+    margin-bottom: 10px;
+    margin-right: 15px;
+}
+
+.hr {
+    border-bottom: 1px solid #eee;
+    width: 100%;
+}
+
+.newsitem {
+    padding-left: 0px;
+    padding-top: 10px;
+    margin-left: 0px;
+    color: #404040;
+    border-bottom: 1px solid #fbfbfb;
+    padding-bottom: 4px;
+    overflow: hidden;
+}
+
+.newsitem:hover {
+    background-color: #fcfcfc;
+}
+
+a.newslink {
+    color: inherit;
+    display: block;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+a.newslink:hover {
+    text-decoration: none;
+}
+
+.newsheader {
+    font-size: 1.5em;
+    line-height: 1.4em;
+    color: #000;
+}
+
+.newsdate {
+    float: right;
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 0.8em;
+}
+
+.bigsearch {
+    margin-bottom: 10px;
+    width: 100%;
+    min-width: 100px;
+}
+
+
+#javascriptwrapper {
+    background-color: #ff4444;
+    width: 100%;
+}
+#javascriptwrapper {
+    text-align: center;
+}
+
+.page-header {
+    margin-bottom: 10px;
+}
+
+.newstext {
+    word-wrap: break-word;
+    padding-right: 13px;
+}
+
+/* Timeslider */
+
+#timeslider {
+    padding-top: 30px;
+    height: 130px;
+    min-width: 1024px;
+    border-color: #333;
+}
+
+.envision-timeslider {
+    max-width: 100%;
+    width: 100%;
+    display: block;
+    border-color: #333;
+}
