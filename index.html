@@ -18,6 +18,18 @@
 	<link rel='stylesheet' href='css/envision.min.css' type='text/css'>
 </head>
 <body>
+
+<!-- Facebook SDK -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fi_FI/all.js#xfbml=1&appId=156504414539967";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
 	<div id="wrapper">
 		<noscript>
 			<div id="javascriptwrapper">
@@ -98,9 +110,21 @@ shell service. It btw also includes LDAP server written in Node.js which we used
 					<div class="span7">
 						<p>We are a team in <a href="http://nodeknockout.com">the Node.js KO competition</a>.</p>
 					</div>
+
+					<!-- Github -->
+					<div class="span3">
+						<a href="https://github.com/tidhr">Tidhr @ GitHub</a>
+					</div>
+
+					<!-- Twitter -->
 					<div class="span3">
 <a href="https://twitter.com/Tidhr" class="twitter-follow-button" data-show-count="false">Follow @Tidhr at Twitter</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+					</div>
+
+					<!-- Facebook -->
+					<div class="span3">
+						<div class="fb-like" data-href="https://www.facebook.com/tidhr" data-width="200" data-layout="button_count" data-show-faces="false" data-send="false"></div>
 					</div>
 				</div>
 			</div>
