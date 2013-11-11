@@ -43,7 +43,7 @@ We use [PostgreSQL 9.3](http://www.postgresql.org/docs/9.3/static/release-9-3.ht
 
 Here is our database schema:
 
-![Database Schema](http://www.tidhr.com/reader/api/db-schema.png)
+![Database Schema](http://www.tidhr.com/reader/db-schema.png)
 
 Most of our API objects use same names.
 
