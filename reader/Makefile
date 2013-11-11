@@ -1,6 +1,9 @@
 marked_opts=--gfm
 
-all: about.html api.html index.html
+all: about.html api.html index.html toc
+
+toc: index.md about.md api.md
+	doctoc .
 
 index.html: index.md
 	marked ${marked_opts} -o index.html index.md
