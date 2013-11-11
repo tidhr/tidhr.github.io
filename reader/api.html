@@ -121,7 +121,7 @@ has correct priviledges. Some resources are public.</p>
 <li>Requires <code>edit_pages</code> priviledge.</li>
 </ul>
 <hr>
-<h3 id="3-1-2-creating-a-new-page">3.1.2. Creating a new page</h3>
+<h4 id="3-1-2-creating-a-new-page">3.1.2. Creating a new page</h4>
 <ul>
 <li><code>POST /rest/pages</code></li>
 <li>Requires <code>edit_pages</code> priviledge.</li>
@@ -247,7 +247,7 @@ competition</a>.</p>
 <hr>
 <h3 id="3-4-user-profile">3.4. User Profile</h3>
 <hr>
-<h3 id="3-4-1-get-current-profile-information">3.4.1. Get current profile information</h3>
+<h4 id="3-4-1-get-current-profile-information">3.4.1. Get current profile information</h4>
 <ul>
 <li><code>GET /rest/profile</code></li>
 <li>Requires <code>profile</code> priviledge.</li>
@@ -270,7 +270,7 @@ competition</a>.</p>
    &quot;username&quot; : &quot;jhh&quot;
 }</code></pre>
 <hr>
-<h3 id="3-4-2-update-user-profile">3.4.2. Update user profile</h3>
+<h4 id="3-4-2-update-user-profile">3.4.2. Update user profile</h4>
 <ul>
 <li><code>POST /rest/profile</code></li>
 </ul>
@@ -288,7 +288,7 @@ profile does not have a username.</li>
 <hr>
 <h3 id="3-5-registration">3.5. Registration</h3>
 <hr>
-<h3 id="3-5-1-registration">3.5.1. Registration</h3>
+<h4 id="3-5-1-registration">3.5.1. Registration</h4>
 <ul>
 <li><code>POST /rest/register</code></li>
 </ul>
@@ -317,24 +317,42 @@ profile does not have a username.</li>
 <li>Requires <code>bots</code> priviledge.</li>
 </ul>
 <p>You will get this object as response:</p>
-<pre><code class="lang-json">```
-
-
-******************************************************************************
-
-
-#### 3.6.2. When a bot wants to register on the server and gets an ID
-
-* `POST /rest/bots`
-* Requires `bots` priviledge.
-
-You will get this object as response:
-
-```json</code></pre>
+<pre><code class="lang-json">[
+   {
+      &quot;last_active&quot; : &quot;2013-11-11T08:03:58.087Z&quot;,
+      &quot;id&quot; : 6,
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/bots/6&quot;
+   },
+   {
+      &quot;last_active&quot; : &quot;2013-11-11T08:04:00.735Z&quot;,
+      &quot;id&quot; : 7,
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/bots/7&quot;
+   },
+   {
+      &quot;last_active&quot; : &quot;2013-11-11T08:04:01.941Z&quot;,
+      &quot;id&quot; : 8,
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/bots/8&quot;
+   },
+   {
+      &quot;last_active&quot; : &quot;2013-11-11T08:04:02.472Z&quot;,
+      &quot;id&quot; : 9,
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/bots/9&quot;
+   },
+   {
+      &quot;last_active&quot; : &quot;2013-11-11T08:04:03.537Z&quot;,
+      &quot;id&quot; : 10,
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/bots/10&quot;
+   },
+   {
+      &quot;last_active&quot; : &quot;2013-11-11T08:04:11.747Z&quot;,
+      &quot;id&quot; : 11,
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/bots/11&quot;
+   }
+]</code></pre>
 <hr>
-<h3 id="3-6-3-">3.6.3.</h3>
+<h4 id="3-6-2-when-a-bot-wants-to-register-on-the-server-and-get-an-id">3.6.2. When a bot wants to register on the server and get an ID</h4>
 <ul>
-<li><code>DELETE /rest/bots/:bot_id</code></li>
+<li><code>POST /rest/bots</code></li>
 <li>Requires <code>bots</code> priviledge.</li>
 </ul>
 <p>You will get this object as response:</p>
@@ -343,104 +361,274 @@ You will get this object as response:
 ******************************************************************************
 
 
-### 3.17. GET /rest/bots/:bot_id
+#### 3.6.3. When a bot wants to unregister from the server
 
+* `DELETE /rest/bots/:bot_id`
 * Requires `bots` priviledge.
 
 You will get this object as response:
 
 ```json</code></pre>
 <hr>
-<h3 id="3-18-get-rest-bots-bot_id-feeds">3.18. GET /rest/bots/:bot_id/feeds</h3>
-<p>You will get this object as response:</p>
-<pre><code class="lang-json">```
-
-* Requires `bots` priviledge.
-
-******************************************************************************
-
-
-### 3.19. POST /rest/feeds
-
-You will get this object as response:
-
-```json</code></pre>
+<h4 id="3-6-4-get-bots-own-resource">3.6.4. Get bots own resource</h4>
 <ul>
+<li><code>GET /rest/bots/:bot_id</code></li>
+<li>Requires <code>bots</code> priviledge.</li>
+</ul>
+<p>You will get this object as response:</p>
+<pre><code class="lang-json">{
+   &quot;feeds&quot; : {
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/bots/11/feeds&quot;
+   }
+}</code></pre>
+<hr>
+<h5 id="3-6-5-1-get-feeds-for-specific-bot">3.6.5.1. Get feeds for specific bot</h5>
+<ul>
+<li><code>GET /rest/bots/:bot_id/feeds</code></li>
+<li>Requires <code>bots</code> priviledge.</li>
+</ul>
+<p>You will get this object as response:</p>
+<pre><code class="lang-json">[
+   {
+      &quot;fetchtime&quot; : &quot;2013-11-11T13:48:51.704Z&quot;,
+      &quot;$ref&quot; : 
+&quot;http://reader.tidhr.com/rest/feeds/c5108ac84f5098aad2b35e3e4f398f92a0154d98&quot;
+   }
+]</code></pre>
+<hr>
+<h3 id="3-7-feeds">3.7. Feeds</h3>
+<hr>
+<h4 id="3-7-1-get-all-feeds-available-for-this-session">3.7.1. Get all feeds available for this session</h4>
+<ul>
+<li><code>GET /rest/feeds</code></li>
+<li>Requires <code>read_feed</code> priviledge.</li>
+</ul>
+<p>You will get this object as response:</p>
+<pre><code class="lang-json">[
+   {
+      &quot;title&quot; : &quot;Uutiset - HS.fi&quot;,
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/feeds/8b60e02efd93face9edd246f6763bf5a0cf5211a&quot;
+   },
+   {
+      &quot;title&quot; : &quot;Yle Uutiset | Oulu | Tuoreimmat uutiset&quot;,
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/feeds/884b15d1eb470eea8b8115298fbc89c2e02db197&quot;
+   },
+   {
+      &quot;title&quot; : &quot;EPisodeWorld RSS feed: All Shows&quot;,
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/feeds/5db57a6dfd42b9cc99c0912e9308b8a0847ce459&quot;
+   },
+   {
+      &quot;title&quot; : &quot;RT - Daily news&quot;,
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/feeds/f727d4e7e321e0dfe50c1ce0b866147b453f069d&quot;
+   }
+]</code></pre>
+<hr>
+<h4 id="3-7-2-subscribe-to-a-new-feed">3.7.2. Subscribe to a new feed</h4>
+<ul>
+<li><code>POST /rest/feeds</code></li>
 <li>Requires <code>join_feed</code> priviledge.</li>
 </ul>
+<p>Example request body:</p>
+<pre><code class="lang-json">{
+   &quot;feedurl&quot;: &quot;http://rss.cnn.com/rss/edition.rss&quot;
+}</code></pre>
 <hr>
-<h3 id="3-20-delete-rest-feeds-feed_id">3.20. DELETE /rest/feeds/:feed_id</h3>
-<p>You will get this object as response:</p>
-<pre><code class="lang-json">```
-
-* Requires `part_feed` priviledge.
-
-******************************************************************************
-
-
-### 3.21. GET /rest/feeds
-
-You will get this object as response:
-
-```json</code></pre>
+<h4 id="3-7-3-unsubscribe-from-specific-feed">3.7.3 Unsubscribe from specific feed</h4>
 <ul>
-<li>Requires <code>read_feed</code> priviledge.</li>
+<li><code>DELETE /rest/feeds/:feed_id</code></li>
+<li>Requires <code>part_feed</code> priviledge.</li>
 </ul>
 <hr>
-<h3 id="3-22-get-rest-feeds-feed_id">3.22. GET /rest/feeds/:feed_id</h3>
-<p>You will get this object as response:</p>
-<pre><code class="lang-json">```
-
-* Requires `read_feed` priviledge.
-
-******************************************************************************
-
-
-### 3.23. GET /rest/feeds/:feed_id/items
-
-You will get this object as response:
-
-```json</code></pre>
+<h4 id="3-7-4-get-specific-feed-object">3.7.4. Get specific feed object</h4>
 <ul>
+<li><code>GET /rest/feeds/:feed_id</code></li>
 <li>Requires <code>read_feed</code> priviledge.</li>
 </ul>
-<hr>
-<h3 id="3-24-post-rest-feeds-feed_id">3.24. POST /rest/feeds/:feed_id</h3>
 <p>You will get this object as response:</p>
-<pre><code class="lang-json">```
-
-* Requires `import_feed` priviledge.
-
-******************************************************************************
-
-
-### 3.25. POST /rest/feeds/:feed_id/items
-
-You will get this object as response:
-
-```json</code></pre>
+<pre><code class="lang-json">{
+   &quot;id&quot; : &quot;884b15d1eb470eea8b8115298fbc89c2e02db197&quot;,
+   &quot;feedurl&quot; : &quot;http://yle.fi/uutiset/rss/uutiset.rss?osasto=oulu&quot;,
+   &quot;title&quot; : &quot;Yle Uutiset | Oulu | Tuoreimmat uutiset&quot;,
+   &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/feeds/884b15d1eb470eea8b8115298fbc89c2e02db197&quot;,
+   &quot;meta&quot; : {
+      &quot;pubdate&quot; : null,
+      &quot;date&quot; : null,
+      &quot;rss:category&quot; : {
+         &quot;#&quot; : &quot;Tuoreimmat uutiset&quot;,
+         &quot;@&quot; : {}
+      },
+      &quot;copyright&quot; : null,
+      &quot;author&quot; : null,
+      &quot;generator&quot; : null,
+      &quot;cloud&quot; : {},
+      &quot;rss:title&quot; : {
+         &quot;#&quot; : &quot;Yle Uutiset | Oulu | Tuoreimmat uutiset&quot;,
+         &quot;@&quot; : {}
+      },
+      &quot;rss:@&quot; : {},
+      &quot;@&quot; : [
+         {
+            &quot;xmlns:content&quot; : &quot;http://purl.org/rss/1.0/modules/content/&quot;
+         }
+      ],
+      &quot;link&quot; : &quot;http://yle.fi/uutiset/&quot;,
+      &quot;#version&quot; : &quot;2.0&quot;,
+      &quot;rss:link&quot; : {
+         &quot;#&quot; : &quot;http://yle.fi/uutiset/&quot;,
+         &quot;@&quot; : {}
+      },
+      &quot;#xml&quot; : {
+         &quot;version&quot; : &quot;1.0&quot;,
+         &quot;encoding&quot; : &quot;UTF-8&quot;
+      },
+      &quot;language&quot; : null,
+      &quot;favicon&quot; : null,
+      &quot;categories&quot; : [
+         &quot;Tuoreimmat uutiset&quot;
+      ],
+      &quot;description&quot; : &quot;Yle Uutiset | Oulu | Tuoreimmat uutiset&quot;,
+      &quot;image&quot; : {},
+      &quot;rss:description&quot; : {
+         &quot;#&quot; : &quot;Yle Uutiset | Oulu | Tuoreimmat uutiset&quot;,
+         &quot;@&quot; : {}
+      },
+      &quot;#ns&quot; : [
+         {
+            &quot;xmlns:content&quot; : &quot;http://purl.org/rss/1.0/modules/content/&quot;
+         }
+      ],
+      &quot;xmlUrl&quot; : null,
+      &quot;title&quot; : &quot;Yle Uutiset | Oulu | Tuoreimmat uutiset&quot;,
+      &quot;#type&quot; : &quot;rss&quot;,
+      &quot;pubDate&quot; : null,
+      &quot;xmlurl&quot; : null
+   },
+   &quot;items&quot; : {
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/feeds/884b15d1eb470eea8b8115298fbc89c2e02db197/items&quot;
+   }
+}</code></pre>
+<hr>
+<h4 id="3-7-5-get-specific-feed-items">3.7.5. Get specific feed items</h4>
 <ul>
+<li><code>GET /rest/feeds/:feed_id/items</code></li>
+<li>Requires <code>read_feed</code> priviledge.</li>
+</ul>
+<p>You will get this object as response:</p>
+<pre><code class="lang-json">[
+   {
+      &quot;summary&quot; : &quot;Nenäpäivän juhlijat valtasivat perjantaina Oulun kävelykatu Rotuaarin. Katso kuvia Nenäpäivän vietosta.&quot;,
+      &quot;read&quot; : false,
+      &quot;title&quot; : &quot;Oulun Rotuaari muuttui punanenäisten kaduksi&quot;,
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/feeds/884b15d1eb470eea8b8115298fbc89c2e02db197/items/7cfcce756090b565fdc5b9132b0ea9a6be4f0290&quot;
+   },
+   {
+      &quot;summary&quot; : &quot;Kolea sääkään ei saanut hyväntekijöitä hyytymään. Oulussa järjestetyissä tapahtumissa kerättiin yhteensä 5555 euroa.&quot;,
+      &quot;read&quot; : false,
+      &quot;title&quot; : &quot;Nenäpäivä keräsi Oulussa ennätyssumman&quot;,
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/feeds/884b15d1eb470eea8b8115298fbc89c2e02db197/items/99890e9c2beb41e359d635421242e415eb51cad0&quot;
+   },
+   {
+      &quot;summary&quot; : &quot;Alun perin omistajien piti päättää jatkostaan lokakuun loppuun mennessä, mutta heille annettiin viikon verran lisäaikaa.&quot;,
+      &quot;read&quot; : false,
+      &quot;title&quot; : &quot;Fennovoiman omistajien kerrottava jatkostaan tänään&quot;,
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/feeds/884b15d1eb470eea8b8115298fbc89c2e02db197/items/3a4eabf78592d969a1115ac5b3c8116a3175a17b&quot;
+   }
+]</code></pre>
+<hr>
+<h4 id="3-7-6-edit-feed-meta-data">3.7.6. Edit feed meta data</h4>
+<ul>
+<li><code>POST /rest/feeds/:feed_id</code></li>
 <li>Requires <code>import_feed</code> priviledge.</li>
 </ul>
+<p>Example request body:</p>
+<pre><code class="lang-json">{
+   &quot;title&quot;: &quot;New title&quot;,
+   &quot;meta&quot;: {
+      ...
+   }
+}</code></pre>
 <hr>
-<h3 id="3-26-get-rest-feeds-feed_id-items-feed_item_id">3.26. GET /rest/feeds/:feed_id/items/:feed_item_id</h3>
+<h4 id="3-7-7-send-new-items-to-feed">3.7.7. Send new items to feed</h4>
+<ul>
+<li><code>POST /rest/feeds/:feed_id/items</code></li>
+<li>Requires <code>import_feed</code> priviledge.</li>
+</ul>
+<p>Example request body:</p>
+<pre><code class="lang-json">{
+   &quot;title&quot;: &quot;Title&quot;,
+   &quot;description&quot;: &quot;Item description&quot;,
+   &quot;summary&quot;: &quot;Item summary&quot;,
+   &quot;link&quot;: &quot;http://example.com/1&quot;,
+   &quot;origlink&quot;: &quot;http://example.com/1&quot;,
+   &quot;date&quot;: &quot;2013-11-08T08:44:23.000Z&quot;,
+   &quot;pubdate&quot;: &quot;2013-11-08T08:44:23.000Z&quot;, 
+   &quot;author&quot;: &quot;&quot;,
+   &quot;guid&quot;: &quot;http://yle.fi/uutiset/6923993&quot;,
+   &quot;comments&quot;: &quot;&quot;,
+   &quot;images&quot;: &quot;&quot;,
+   &quot;categories&quot;: [&quot;One&quot;, &quot;Two&quot;],
+   &quot;source&quot;: &quot;&quot;, 
+   &quot;enclosures&quot;: [
+      {
+         &quot;length&quot; : null,
+         &quot;url&quot; : &quot;http://img.yle.fi/uutiset/oulu/article6923966.ece/ALTERNATES/w205h115/081113+nen%C3%A4p%C3%A4iv%C3%A4+2013+rotuaari+villasukka+pellenen%C3%A4&quot;,
+         &quot;type&quot; : &quot;image/jpeg&quot;
+      }
+   ],
+   &quot;meta&quot;: {
+      ...
+   }
+}</code></pre>
+<p>You can also send more than one by sending an array instead:</p>
+<pre><code class="lang-json">[
+  {
+     ...
+  },
+  {
+     ...
+  }
+]</code></pre>
+<hr>
+<h4 id="3-7-8-get-single-feed-item">3.7.8. Get single feed item</h4>
+<ul>
+<li><code>GET /rest/feeds/:feed_id/items/:feed_item_id</code></li>
+<li>Requires <code>read_feed</code> priviledge.</li>
+</ul>
 <p>You will get this object as response:</p>
-<pre><code class="lang-json">```
-
-* Requires `read_feed` priviledge.
-
-******************************************************************************
-
-
-4. GET /auth
-------------
-
-Some passport related APIs are located at [https://reader.tidhr.com/auth/](reader.tidhr.com/auth/).
-
-You will get this object as response:
-
-```json
-{
+<pre><code class="lang-json">{
+   &quot;source&quot; : {},
+   &quot;pubdate&quot; : &quot;2013-11-08T08:44:23.000Z&quot;,
+   &quot;feed_id&quot; : &quot;884b15d1eb470eea8b8115298fbc89c2e02db197&quot;,
+   &quot;date&quot; : &quot;2013-11-08T08:44:23.000Z&quot;,
+   &quot;author&quot; : null,
+   &quot;comments&quot; : null,
+   &quot;meta&quot; : null,
+   &quot;enclosures&quot; : [
+      {
+         &quot;length&quot; : null,
+         &quot;url&quot; : &quot;http://img.yle.fi/uutiset/oulu/article6923966.ece/ALTERNATES/w205h115/081113+nen%C3%A4p%C3%A4iv%C3%A4+2013+rotuaari+villasukka+pellenen%C3%A4&quot;,
+         &quot;type&quot; : &quot;image/jpeg&quot;
+      }
+   ],
+   &quot;summary&quot; : &quot;Nenäpäivän juhlijat valtasivat perjantaina Oulun kävelykatu 
+Rotuaarin. Katso kuvia Nenäpäivän vietosta.&quot;,
+   &quot;guid&quot; : &quot;http://yle.fi/uutiset/6923993&quot;,
+   &quot;id&quot; : &quot;7cfcce756090b565fdc5b9132b0ea9a6be4f0290&quot;,
+   &quot;link&quot; : &quot;http://yle.fi/uutiset/oulun_rotuaari_muuttui_punanenaisten_kaduksi/6923993?origin=rss&quot;,
+   &quot;origlink&quot; : null,
+   &quot;categories&quot; : [
+      &quot;Oulu&quot;
+   ],
+   &quot;description&quot; : &quot;Nenäpäivän juhlijat valtasivat perjantaina Oulun kävelykatu 
+Rotuaarin. Katso kuvia Nenäpäivän vietosta.&quot;,
+   &quot;image&quot; : null,
+   &quot;title&quot; : &quot;Oulun Rotuaari muuttui punanenäisten kaduksi&quot;
+}</code></pre>
+<hr>
+<h2 id="4-get-auth">4. GET /auth</h2>
+<p>Some passport related APIs are located at <a href="reader.tidhr.com/auth/"><a href="https://reader.tidhr.com/auth/">https://reader.tidhr.com/auth/</a></a>.</p>
+<p>You will get this object as response:</p>
+<pre><code class="lang-json">{
    &quot;facebook&quot; : {
       &quot;$ref&quot; : &quot;https://reader.tidhr.com/auth/facebook&quot;
    },
@@ -451,9 +639,35 @@ You will get this object as response:
       &quot;$ref&quot; : &quot;https://reader.tidhr.com/auth/local&quot;                                                                                                                             
    }                                                                                                                                                                             
 }</code></pre>
+<p>If a property...</p>
+<ul>
+<li><code>facebook</code> exists, you can initiate authentication process for Facebook by linking user to resource pointed by <code>$ref</code></li>
+<li><code>github</code> exists, you can initiate authentication process for Github by linking to resource pointed by <code>$ref</code></li>
+<li><code>local</code> exists, you can use local authentication by POSTing to resource pointed by <code>$ref</code></li>
+<li><code>logout</code> exists, it means a session is active and user can logout GETing resource pointed by <code>$ref</code></li>
+<li><code>profile</code> exists, it means a session is active and profile is available in the resource pointed by <code>$ref</code></li>
+</ul>
+<h3 id="4-1-login-by-local-authentication">4.1. Login by local authentication</h3>
+<ul>
+<li><code>POST /auth/local</code></li>
+</ul>
+<p>Example JSON request body:</p>
+<pre><code class="lang-json">{
+   &quot;username&quot;: &quot;john&quot;,
+   &quot;password&quot;: &quot;12345678&quot;
+}</code></pre>
+<p>This will create a Cookie based session.</p>
+<h3 id="4-2-logout">4.2. Logout</h3>
+<ul>
+<li><code>GET /auth/logout</code></li>
+</ul>
 <hr>
 <h2 id="a-appendix">A. Appendix</h2>
 <hr>
 <h3 id="a1-how-to-use-curl">A1. How to use CURL</h3>
 <p>Save settings to <code>.netrc</code> and use <code>curl -n [-X method] URL</code>.</p>
+<p>Example <code>.netrc</code> file:</p>
+<pre><code>machine reader.tidhr.com
+  login 1u766KPuWTP0fSJJzs62gtAd5YXQpQ4X
+  password LAajuGRpbYdaorxgh5u5q3EtaajWowqG</code></pre>
 <hr>

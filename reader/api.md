@@ -169,7 +169,7 @@ Example input body (with Content-Type header as `application/json`):
 ******************************************************************************
 
 
-### 3.1.2. Creating a new page
+#### 3.1.2. Creating a new page
 
 * `POST /rest/pages`
 * Requires `edit_pages` priviledge.
@@ -337,7 +337,7 @@ You will get this object as response:
 
 ******************************************************************************
 
-### 3.4.1. Get current profile information
+#### 3.4.1. Get current profile information
 
 * `GET /rest/profile`
 * Requires `profile` priviledge.
@@ -366,7 +366,7 @@ You will get this object as response:
 ******************************************************************************
 
 
-### 3.4.2. Update user profile
+#### 3.4.2. Update user profile
 
 * `POST /rest/profile`
 
@@ -391,7 +391,7 @@ profile does not have a username.
 ******************************************************************************
 
 
-### 3.5.1. Registration
+#### 3.5.1. Registration
 
 * `POST /rest/register`
 
@@ -436,13 +436,45 @@ You will get this object as response:
 You will get this object as response:
 
 ```json
+[
+   {
+      "last_active" : "2013-11-11T08:03:58.087Z",
+      "id" : 6,
+      "$ref" : "http://reader.tidhr.com/rest/bots/6"
+   },
+   {
+      "last_active" : "2013-11-11T08:04:00.735Z",
+      "id" : 7,
+      "$ref" : "http://reader.tidhr.com/rest/bots/7"
+   },
+   {
+      "last_active" : "2013-11-11T08:04:01.941Z",
+      "id" : 8,
+      "$ref" : "http://reader.tidhr.com/rest/bots/8"
+   },
+   {
+      "last_active" : "2013-11-11T08:04:02.472Z",
+      "id" : 9,
+      "$ref" : "http://reader.tidhr.com/rest/bots/9"
+   },
+   {
+      "last_active" : "2013-11-11T08:04:03.537Z",
+      "id" : 10,
+      "$ref" : "http://reader.tidhr.com/rest/bots/10"
+   },
+   {
+      "last_active" : "2013-11-11T08:04:11.747Z",
+      "id" : 11,
+      "$ref" : "http://reader.tidhr.com/rest/bots/11"
+   }
+]
 ```
 
 
 ******************************************************************************
 
 
-#### 3.6.2. When a bot wants to register on the server and gets an ID
+#### 3.6.2. When a bot wants to register on the server and get an ID
 
 * `POST /rest/bots`
 * Requires `bots` priviledge.
@@ -455,7 +487,7 @@ You will get this object as response:
 ******************************************************************************
 
 
-### 3.6.3. 
+#### 3.6.3. When a bot wants to unregister from the server
 
 * `DELETE /rest/bots/:bot_id`
 * Requires `bots` priviledge.
@@ -468,122 +500,323 @@ You will get this object as response:
 ******************************************************************************
 
 
-### 3.17. GET /rest/bots/:bot_id
+#### 3.6.4. Get bots own resource
 
+* `GET /rest/bots/:bot_id`
 * Requires `bots` priviledge.
 
 You will get this object as response:
 
 ```json
+{
+   "feeds" : {
+      "$ref" : "http://reader.tidhr.com/rest/bots/11/feeds"
+   }
+}
 ```
 
 ******************************************************************************
 
 
-### 3.18. GET /rest/bots/:bot_id/feeds
+##### 3.6.5.1. Get feeds for specific bot
 
-You will get this object as response:
-
-```json
-```
-
+* `GET /rest/bots/:bot_id/feeds`
 * Requires `bots` priviledge.
 
+You will get this object as response:
+
+```json
+[
+   {
+      "fetchtime" : "2013-11-11T13:48:51.704Z",
+      "$ref" : 
+"http://reader.tidhr.com/rest/feeds/c5108ac84f5098aad2b35e3e4f398f92a0154d98"
+   }
+]
+```
+
 ******************************************************************************
 
 
-### 3.19. POST /rest/feeds
+### 3.7. Feeds
+
+******************************************************************************
+
+
+#### 3.7.1. Get all feeds available for this session
+
+* `GET /rest/feeds`
+* Requires `read_feed` priviledge.
 
 You will get this object as response:
 
 ```json
+[
+   {
+      "title" : "Uutiset - HS.fi",
+      "$ref" : "http://reader.tidhr.com/rest/feeds/8b60e02efd93face9edd246f6763bf5a0cf5211a"
+   },
+   {
+      "title" : "Yle Uutiset | Oulu | Tuoreimmat uutiset",
+      "$ref" : "http://reader.tidhr.com/rest/feeds/884b15d1eb470eea8b8115298fbc89c2e02db197"
+   },
+   {
+      "title" : "EPisodeWorld RSS feed: All Shows",
+      "$ref" : "http://reader.tidhr.com/rest/feeds/5db57a6dfd42b9cc99c0912e9308b8a0847ce459"
+   },
+   {
+      "title" : "RT - Daily news",
+      "$ref" : "http://reader.tidhr.com/rest/feeds/f727d4e7e321e0dfe50c1ce0b866147b453f069d"
+   }
+]
 ```
 
+******************************************************************************
+
+
+#### 3.7.2. Subscribe to a new feed
+
+* `POST /rest/feeds`
 * Requires `join_feed` priviledge.
 
+Example request body:
+
+```json
+{
+   "feedurl": "http://rss.cnn.com/rss/edition.rss"
+}
+```
+
 ******************************************************************************
 
 
-### 3.20. DELETE /rest/feeds/:feed_id
+#### 3.7.3 Unsubscribe from specific feed
 
-You will get this object as response:
-
-```json
-```
-
+* `DELETE /rest/feeds/:feed_id`
 * Requires `part_feed` priviledge.
 
+
 ******************************************************************************
 
 
-### 3.21. GET /rest/feeds
+#### 3.7.4. Get specific feed object
 
-You will get this object as response:
-
-```json
-```
-
+* `GET /rest/feeds/:feed_id`
 * Requires `read_feed` priviledge.
 
-******************************************************************************
-
-
-### 3.22. GET /rest/feeds/:feed_id
-
 You will get this object as response:
 
 ```json
+{
+   "id" : "884b15d1eb470eea8b8115298fbc89c2e02db197",
+   "feedurl" : "http://yle.fi/uutiset/rss/uutiset.rss?osasto=oulu",
+   "title" : "Yle Uutiset | Oulu | Tuoreimmat uutiset",
+   "$ref" : "http://reader.tidhr.com/rest/feeds/884b15d1eb470eea8b8115298fbc89c2e02db197",
+   "meta" : {
+      "pubdate" : null,
+      "date" : null,
+      "rss:category" : {
+         "#" : "Tuoreimmat uutiset",
+         "@" : {}
+      },
+      "copyright" : null,
+      "author" : null,
+      "generator" : null,
+      "cloud" : {},
+      "rss:title" : {
+         "#" : "Yle Uutiset | Oulu | Tuoreimmat uutiset",
+         "@" : {}
+      },
+      "rss:@" : {},
+      "@" : [
+         {
+            "xmlns:content" : "http://purl.org/rss/1.0/modules/content/"
+         }
+      ],
+      "link" : "http://yle.fi/uutiset/",
+      "#version" : "2.0",
+      "rss:link" : {
+         "#" : "http://yle.fi/uutiset/",
+         "@" : {}
+      },
+      "#xml" : {
+         "version" : "1.0",
+         "encoding" : "UTF-8"
+      },
+      "language" : null,
+      "favicon" : null,
+      "categories" : [
+         "Tuoreimmat uutiset"
+      ],
+      "description" : "Yle Uutiset | Oulu | Tuoreimmat uutiset",
+      "image" : {},
+      "rss:description" : {
+         "#" : "Yle Uutiset | Oulu | Tuoreimmat uutiset",
+         "@" : {}
+      },
+      "#ns" : [
+         {
+            "xmlns:content" : "http://purl.org/rss/1.0/modules/content/"
+         }
+      ],
+      "xmlUrl" : null,
+      "title" : "Yle Uutiset | Oulu | Tuoreimmat uutiset",
+      "#type" : "rss",
+      "pubDate" : null,
+      "xmlurl" : null
+   },
+   "items" : {
+      "$ref" : "http://reader.tidhr.com/rest/feeds/884b15d1eb470eea8b8115298fbc89c2e02db197/items"
+   }
+}
 ```
 
+******************************************************************************
+
+
+#### 3.7.5. Get specific feed items
+
+* `GET /rest/feeds/:feed_id/items`
 * Requires `read_feed` priviledge.
 
-******************************************************************************
-
-
-### 3.23. GET /rest/feeds/:feed_id/items
-
 You will get this object as response:
 
 ```json
+[
+   {
+      "summary" : "Nenäpäivän juhlijat valtasivat perjantaina Oulun kävelykatu Rotuaarin. Katso kuvia Nenäpäivän vietosta.",
+      "read" : false,
+      "title" : "Oulun Rotuaari muuttui punanenäisten kaduksi",
+      "$ref" : "http://reader.tidhr.com/rest/feeds/884b15d1eb470eea8b8115298fbc89c2e02db197/items/7cfcce756090b565fdc5b9132b0ea9a6be4f0290"
+   },
+   {
+      "summary" : "Kolea sääkään ei saanut hyväntekijöitä hyytymään. Oulussa järjestetyissä tapahtumissa kerättiin yhteensä 5555 euroa.",
+      "read" : false,
+      "title" : "Nenäpäivä keräsi Oulussa ennätyssumman",
+      "$ref" : "http://reader.tidhr.com/rest/feeds/884b15d1eb470eea8b8115298fbc89c2e02db197/items/99890e9c2beb41e359d635421242e415eb51cad0"
+   },
+   {
+      "summary" : "Alun perin omistajien piti päättää jatkostaan lokakuun loppuun mennessä, mutta heille annettiin viikon verran lisäaikaa.",
+      "read" : false,
+      "title" : "Fennovoiman omistajien kerrottava jatkostaan tänään",
+      "$ref" : "http://reader.tidhr.com/rest/feeds/884b15d1eb470eea8b8115298fbc89c2e02db197/items/3a4eabf78592d969a1115ac5b3c8116a3175a17b"
+   }
+]
+ 
 ```
-
-* Requires `read_feed` priviledge.
 
 ******************************************************************************
 
 
-### 3.24. POST /rest/feeds/:feed_id
+#### 3.7.6. Edit feed meta data
 
-You will get this object as response:
-
-```json
-```
-
+* `POST /rest/feeds/:feed_id`
 * Requires `import_feed` priviledge.
 
+Example request body:
+
+```json
+{
+   "title": "New title",
+   "meta": {
+      ...
+   }
+}
+```
+
+
 ******************************************************************************
 
 
-### 3.25. POST /rest/feeds/:feed_id/items
+#### 3.7.7. Send new items to feed
 
-You will get this object as response:
-
-```json
-```
-
+* `POST /rest/feeds/:feed_id/items`
 * Requires `import_feed` priviledge.
 
+Example request body:
+
+```json
+{
+   "title": "Title",
+   "description": "Item description",
+   "summary": "Item summary",
+   "link": "http://example.com/1",
+   "origlink": "http://example.com/1",
+   "date": "2013-11-08T08:44:23.000Z",
+   "pubdate": "2013-11-08T08:44:23.000Z", 
+   "author": "",
+   "guid": "http://yle.fi/uutiset/6923993",
+   "comments": "",
+   "images": "",
+   "categories": ["One", "Two"],
+   "source": "", 
+   "enclosures": [
+      {
+         "length" : null,
+         "url" : "http://img.yle.fi/uutiset/oulu/article6923966.ece/ALTERNATES/w205h115/081113+nen%C3%A4p%C3%A4iv%C3%A4+2013+rotuaari+villasukka+pellenen%C3%A4",
+         "type" : "image/jpeg"
+      }
+   ],
+   "meta": {
+      ...
+   }
+}
+```
+
+You can also send more than one by sending an array instead:
+
+```json
+[
+  {
+     ...
+  },
+  {
+     ...
+  }
+]
+```
+
 ******************************************************************************
 
 
-### 3.26. GET /rest/feeds/:feed_id/items/:feed_item_id
+#### 3.7.8. Get single feed item 
+
+* `GET /rest/feeds/:feed_id/items/:feed_item_id`
+* Requires `read_feed` priviledge.
 
 You will get this object as response:
 
 ```json
+{
+   "source" : {},
+   "pubdate" : "2013-11-08T08:44:23.000Z",
+   "feed_id" : "884b15d1eb470eea8b8115298fbc89c2e02db197",
+   "date" : "2013-11-08T08:44:23.000Z",
+   "author" : null,
+   "comments" : null,
+   "meta" : null,
+   "enclosures" : [
+      {
+         "length" : null,
+         "url" : "http://img.yle.fi/uutiset/oulu/article6923966.ece/ALTERNATES/w205h115/081113+nen%C3%A4p%C3%A4iv%C3%A4+2013+rotuaari+villasukka+pellenen%C3%A4",
+         "type" : "image/jpeg"
+      }
+   ],
+   "summary" : "Nenäpäivän juhlijat valtasivat perjantaina Oulun kävelykatu 
+Rotuaarin. Katso kuvia Nenäpäivän vietosta.",
+   "guid" : "http://yle.fi/uutiset/6923993",
+   "id" : "7cfcce756090b565fdc5b9132b0ea9a6be4f0290",
+   "link" : "http://yle.fi/uutiset/oulun_rotuaari_muuttui_punanenaisten_kaduksi/6923993?origin=rss",
+   "origlink" : null,
+   "categories" : [
+      "Oulu"
+   ],
+   "description" : "Nenäpäivän juhlijat valtasivat perjantaina Oulun kävelykatu 
+Rotuaarin. Katso kuvia Nenäpäivän vietosta.",
+   "image" : null,
+   "title" : "Oulun Rotuaari muuttui punanenäisten kaduksi"
+}
 ```
-
-* Requires `read_feed` priviledge.
 
 ******************************************************************************
 
@@ -609,11 +842,38 @@ You will get this object as response:
 }  
 ```
 
+If a property...
+
+* `facebook` exists, you can initiate authentication process for Facebook by linking user to resource pointed by `$ref`
+* `github` exists, you can initiate authentication process for Github by linking to resource pointed by `$ref`
+* `local` exists, you can use local authentication by POSTing to resource pointed by `$ref`
+* `logout` exists, it means a session is active and user can logout GETing resource pointed by `$ref`
+* `profile` exists, it means a session is active and profile is available in the resource pointed by `$ref`
+
+### 4.1. Login by local authentication
+
+* `POST /auth/local`
+
+Example JSON request body:
+```json
+{
+   "username": "john",
+   "password": "12345678"
+}
+```
+
+This will create a Cookie based session.
+
+
+### 4.2. Logout
+
+* `GET /auth/logout`
+
 ******************************************************************************
 
 
 A. Appendix
---------
+-----------
 
 ******************************************************************************
 
@@ -621,6 +881,14 @@ A. Appendix
 ### A1. How to use CURL
 
 Save settings to `.netrc` and use `curl -n [-X method] URL`.
+
+Example `.netrc` file:
+
+```
+machine reader.tidhr.com
+  login 1u766KPuWTP0fSJJzs62gtAd5YXQpQ4X
+  password LAajuGRpbYdaorxgh5u5q3EtaajWowqG
+```
 
 ******************************************************************************
 
