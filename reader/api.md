@@ -14,7 +14,7 @@ These objects may contain partial child objects from other online resources if t
 is if the object itself has `$ref` as the first level property -- then it is the link to the resource itself.
 
 GET /rest
------
+---------
 
 Sample output:
 
@@ -214,3 +214,10 @@ GET output:
    }                                                                                                                                                                             
 }  
 ```
+
+Appendix
+--------
+
+### How to use CURL
+
+Save settings to `.netrc` and use `curl -n [-X method] URL`.
