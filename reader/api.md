@@ -48,7 +48,7 @@ About the REST API
 ==================
 
 Our [reader.tidhr.com](https://reader.tidhr.com) has also a REST API with 
-support for external 3rd party apps. This document describes the API.
+support for external 3rd party apps. This document describes this API.
 
 The base URL for our REST service is 
 [https://reader.tidhr.com/rest](reader.tidhr.com/rest). You can use HTTPS or 
