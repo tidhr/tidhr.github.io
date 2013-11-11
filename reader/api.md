@@ -154,7 +154,7 @@ Possible optional properties for this resource are `feeds`, `debug`, `bots`,
 `profile`, `authorizations`, `access_token`, `register`, `pages`, and `auth`.
 
 These properties are included only if your access token or authorized session 
-has correct priviledges. Some resources are public.
+has correct privileges. Some resources are public.
 
 ******************************************************************************
 
@@ -205,7 +205,7 @@ Sample output:
 ##### 3.1.1.2. Updates the page content
 
 * `POST /rest/pages/:name`
-* Requires `edit_pages` priviledge.
+* Requires `edit_pages` privilege.
 
 Example input body (with Content-Type header as `application/json`):
 
@@ -224,7 +224,7 @@ Example input body (with Content-Type header as `application/json`):
 ##### 3.1.1.3. Delete the page resource
 
 * DELETE /rest/pages/:name
-* Requires `edit_pages` priviledge.
+* Requires `edit_pages` privilege.
 
 ******************************************************************************
 
@@ -232,7 +232,7 @@ Example input body (with Content-Type header as `application/json`):
 #### 3.1.2. Creating a new page
 
 * `POST /rest/pages`
-* Requires `edit_pages` priviledge.
+* Requires `edit_pages` privilege.
 
 Example input body (with `application/json` content type):
 
@@ -260,7 +260,7 @@ by default. (Actual library we are using is
 #### 3.2.1. Get list of access tokens
 
 * `GET /rest/authorizations`
-* Requires `profile` priviledge.
+* Requires `profile` privilege.
 
 Example output:
 ```json
@@ -289,7 +289,7 @@ Example output:
 ##### 3.2.1.1. Get access token resource
 
 * `GET /rest/authorizations/:access_token`
-* Requires `profile` priviledge.
+* Requires `profile` privilege.
 
 Example response:
 
@@ -317,7 +317,7 @@ Example response:
 ##### 3.2.1.2. Delete access token
 
 * `DELETE /rest/authorizations/:access_token`
-* Requires `profile` priviledge.
+* Requires `profile` privilege.
 
 ******************************************************************************
 
@@ -346,7 +346,7 @@ example.
 we cannot fix our app code during [the Node Knockout 
 competition](http://nodeknockout.com).
 
-* Requires `profile` priviledge.
+* Requires `profile` privilege.
 
 You will get this object as response:
 
@@ -376,7 +376,7 @@ You will get this object as response:
 ### 3.3. Returns debug information from the service.
 
 * `GET /rest/debug`
-* Requires `debug` priviledge.
+* Requires `debug` privilege.
 
 You will get this object as response:
 
@@ -400,7 +400,7 @@ You will get this object as response:
 #### 3.4.1. Get current profile information
 
 * `GET /rest/profile`
-* Requires `profile` priviledge.
+* Requires `profile` privilege.
 
 You will get this object as response:
 
@@ -441,7 +441,7 @@ Example input body:
 * Property `username` is optional. Username can only be changed if current 
 profile does not have a username.
 * Property `password is optional. If provided, users' password will be changed.
-* Requires `edit_profile` priviledge.
+* Requires `edit_profile` privilege.
 
 ******************************************************************************
 
@@ -491,7 +491,7 @@ You will get this object as response:
 #### 3.6.1. Get list of active bots
 
 * `GET /rest/bots`
-* Requires `bots` priviledge.
+* Requires `bots` privilege.
 
 You will get this object as response:
 
@@ -537,7 +537,7 @@ You will get this object as response:
 #### 3.6.2. When a bot wants to register on the server and get an ID
 
 * `POST /rest/bots`
-* Requires `bots` priviledge.
+* Requires `bots` privilege.
 
 You will get this object as response:
 
@@ -550,7 +550,7 @@ You will get this object as response:
 #### 3.6.3. When a bot wants to unregister from the server
 
 * `DELETE /rest/bots/:bot_id`
-* Requires `bots` priviledge.
+* Requires `bots` privilege.
 
 You will get this object as response:
 
@@ -563,7 +563,7 @@ You will get this object as response:
 #### 3.6.4. Get bots own resource
 
 * `GET /rest/bots/:bot_id`
-* Requires `bots` priviledge.
+* Requires `bots` privilege.
 
 You will get this object as response:
 
@@ -581,7 +581,7 @@ You will get this object as response:
 ##### 3.6.5.1. Get feeds for specific bot
 
 * `GET /rest/bots/:bot_id/feeds`
-* Requires `bots` priviledge.
+* Requires `bots` privilege.
 
 You will get this object as response:
 
@@ -606,7 +606,7 @@ You will get this object as response:
 #### 3.7.1. Get all feeds available for this session
 
 * `GET /rest/feeds`
-* Requires `read_feed` priviledge.
+* Requires `read_feed` privilege.
 
 You will get this object as response:
 
@@ -637,7 +637,7 @@ You will get this object as response:
 #### 3.7.2. Subscribe to a new feed
 
 * `POST /rest/feeds`
-* Requires `join_feed` priviledge.
+* Requires `join_feed` privilege.
 
 Example request body:
 
@@ -653,7 +653,7 @@ Example request body:
 #### 3.7.3 Unsubscribe from specific feed
 
 * `DELETE /rest/feeds/:feed_id`
-* Requires `part_feed` priviledge.
+* Requires `part_feed` privilege.
 
 
 ******************************************************************************
@@ -662,7 +662,7 @@ Example request body:
 #### 3.7.4. Get specific feed object
 
 * `GET /rest/feeds/:feed_id`
-* Requires `read_feed` priviledge.
+* Requires `read_feed` privilege.
 
 You will get this object as response:
 
@@ -737,7 +737,7 @@ You will get this object as response:
 #### 3.7.5. Get specific feed items
 
 * `GET /rest/feeds/:feed_id/items`
-* Requires `read_feed` priviledge.
+* Requires `read_feed` privilege.
 
 You will get this object as response:
 
@@ -771,7 +771,7 @@ You will get this object as response:
 #### 3.7.6. Edit feed meta data
 
 * `POST /rest/feeds/:feed_id`
-* Requires `import_feed` priviledge.
+* Requires `import_feed` privilege.
 
 Example request body:
 
@@ -791,7 +791,7 @@ Example request body:
 #### 3.7.7. Send new items to feed
 
 * `POST /rest/feeds/:feed_id/items`
-* Requires `import_feed` priviledge.
+* Requires `import_feed` privilege.
 
 Example request body:
 
@@ -842,7 +842,7 @@ You can also send more than one by sending an array instead:
 #### 3.7.8. Get single feed item 
 
 * `GET /rest/feeds/:feed_id/items/:feed_item_id`
-* Requires `read_feed` priviledge.
+* Requires `read_feed` privilege.
 
 You will get this object as response:
 
