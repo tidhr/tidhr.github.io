@@ -70,7 +70,7 @@
 </ul>
 <h1 id="about-the-rest-api">About the REST API</h1>
 <p>Our <a href="https://reader.tidhr.com">reader.tidhr.com</a> has also a REST API with 
-support for external 3rd party apps. This document describes the API.</p>
+support for external 3rd party apps. This document describes this API.</p>
 <p>The base URL for our REST service is 
 <a href="reader.tidhr.com/rest"><a href="https://reader.tidhr.com/rest">https://reader.tidhr.com/rest</a></a>. You can use HTTPS or 
 HTTP.</p>
@@ -147,7 +147,7 @@ property -- then it is the link to the resource itself.</p>
 <p>Possible optional properties for this resource are <code>feeds</code>, <code>debug</code>, <code>bots</code>, 
 <code>profile</code>, <code>authorizations</code>, <code>access_token</code>, <code>register</code>, <code>pages</code>, and <code>auth</code>.</p>
 <p>These properties are included only if your access token or authorized session 
-has correct priviledges. Some resources are public.</p>
+has correct privileges. Some resources are public.</p>
 <hr>
 <h3 id="3-1-pages">3.1. Pages</h3>
 <hr>
@@ -183,7 +183,7 @@ has correct priviledges. Some resources are public.</p>
 <h5 id="3-1-1-2-updates-the-page-content">3.1.1.2. Updates the page content</h5>
 <ul>
 <li><code>POST /rest/pages/:name</code></li>
-<li>Requires <code>edit_pages</code> priviledge.</li>
+<li>Requires <code>edit_pages</code> privilege.</li>
 </ul>
 <p>Example input body (with Content-Type header as <code>application/json</code>):</p>
 <pre><code class="lang-json">{
@@ -196,13 +196,13 @@ has correct priviledges. Some resources are public.</p>
 <h5 id="3-1-1-3-delete-the-page-resource">3.1.1.3. Delete the page resource</h5>
 <ul>
 <li>DELETE /rest/pages/:name</li>
-<li>Requires <code>edit_pages</code> priviledge.</li>
+<li>Requires <code>edit_pages</code> privilege.</li>
 </ul>
 <hr>
 <h4 id="3-1-2-creating-a-new-page">3.1.2. Creating a new page</h4>
 <ul>
 <li><code>POST /rest/pages</code></li>
-<li>Requires <code>edit_pages</code> priviledge.</li>
+<li>Requires <code>edit_pages</code> privilege.</li>
 </ul>
 <p>Example input body (with <code>application/json</code> content type):</p>
 <pre><code class="lang-json">{
@@ -220,7 +220,7 @@ by default. (Actual library we are using is
 <h4 id="3-2-1-get-list-of-access-tokens">3.2.1. Get list of access tokens</h4>
 <ul>
 <li><code>GET /rest/authorizations</code></li>
-<li>Requires <code>profile</code> priviledge.</li>
+<li>Requires <code>profile</code> privilege.</li>
 </ul>
 <p>Example output:</p>
 <pre><code class="lang-json">[
@@ -244,7 +244,7 @@ by default. (Actual library we are using is
 <h5 id="3-2-1-1-get-access-token-resource">3.2.1.1. Get access token resource</h5>
 <ul>
 <li><code>GET /rest/authorizations/:access_token</code></li>
-<li>Requires <code>profile</code> priviledge.</li>
+<li>Requires <code>profile</code> privilege.</li>
 </ul>
 <p>Example response:</p>
 <pre><code class="lang-json">{
@@ -266,7 +266,7 @@ by default. (Actual library we are using is
 <h5 id="3-2-1-2-delete-access-token">3.2.1.2. Delete access token</h5>
 <ul>
 <li><code>DELETE /rest/authorizations/:access_token</code></li>
-<li>Requires <code>profile</code> priviledge.</li>
+<li>Requires <code>profile</code> privilege.</li>
 </ul>
 <hr>
 <h4 id="3-2-2-create-a-new-access-token">3.2.2. Create a new access token</h4>
@@ -288,7 +288,7 @@ example.</p>
 we cannot fix our app code during <a href="http://nodeknockout.com">the Node Knockout 
 competition</a>.</p>
 <ul>
-<li>Requires <code>profile</code> priviledge.</li>
+<li>Requires <code>profile</code> privilege.</li>
 </ul>
 <p>You will get this object as response:</p>
 <pre><code class="lang-json">{
@@ -312,7 +312,7 @@ competition</a>.</p>
 <h3 id="3-3-returns-debug-information-from-the-service-">3.3. Returns debug information from the service.</h3>
 <ul>
 <li><code>GET /rest/debug</code></li>
-<li>Requires <code>debug</code> priviledge.</li>
+<li>Requires <code>debug</code> privilege.</li>
 </ul>
 <p>You will get this object as response:</p>
 <pre><code class="lang-json">{
@@ -328,7 +328,7 @@ competition</a>.</p>
 <h4 id="3-4-1-get-current-profile-information">3.4.1. Get current profile information</h4>
 <ul>
 <li><code>GET /rest/profile</code></li>
-<li>Requires <code>profile</code> priviledge.</li>
+<li>Requires <code>profile</code> privilege.</li>
 </ul>
 <p>You will get this object as response:</p>
 <pre><code class="lang-json">{
@@ -361,7 +361,7 @@ competition</a>.</p>
 <li>Property <code>username</code> is optional. Username can only be changed if current 
 profile does not have a username.</li>
 <li>Property `password is optional. If provided, users&#39; password will be changed.</li>
-<li>Requires <code>edit_profile</code> priviledge.</li>
+<li>Requires <code>edit_profile</code> privilege.</li>
 </ul>
 <hr>
 <h3 id="3-5-registration">3.5. Registration</h3>
@@ -392,7 +392,7 @@ profile does not have a username.</li>
 <h4 id="3-6-1-get-list-of-active-bots">3.6.1. Get list of active bots</h4>
 <ul>
 <li><code>GET /rest/bots</code></li>
-<li>Requires <code>bots</code> priviledge.</li>
+<li>Requires <code>bots</code> privilege.</li>
 </ul>
 <p>You will get this object as response:</p>
 <pre><code class="lang-json">[
@@ -431,7 +431,7 @@ profile does not have a username.</li>
 <h4 id="3-6-2-when-a-bot-wants-to-register-on-the-server-and-get-an-id">3.6.2. When a bot wants to register on the server and get an ID</h4>
 <ul>
 <li><code>POST /rest/bots</code></li>
-<li>Requires <code>bots</code> priviledge.</li>
+<li>Requires <code>bots</code> privilege.</li>
 </ul>
 <p>You will get this object as response:</p>
 <pre><code class="lang-json">```
@@ -442,7 +442,7 @@ profile does not have a username.</li>
 #### 3.6.3. When a bot wants to unregister from the server
 
 * `DELETE /rest/bots/:bot_id`
-* Requires `bots` priviledge.
+* Requires `bots` privilege.
 
 You will get this object as response:
 
@@ -451,7 +451,7 @@ You will get this object as response:
 <h4 id="3-6-4-get-bots-own-resource">3.6.4. Get bots own resource</h4>
 <ul>
 <li><code>GET /rest/bots/:bot_id</code></li>
-<li>Requires <code>bots</code> priviledge.</li>
+<li>Requires <code>bots</code> privilege.</li>
 </ul>
 <p>You will get this object as response:</p>
 <pre><code class="lang-json">{
@@ -463,7 +463,7 @@ You will get this object as response:
 <h5 id="3-6-5-1-get-feeds-for-specific-bot">3.6.5.1. Get feeds for specific bot</h5>
 <ul>
 <li><code>GET /rest/bots/:bot_id/feeds</code></li>
-<li>Requires <code>bots</code> priviledge.</li>
+<li>Requires <code>bots</code> privilege.</li>
 </ul>
 <p>You will get this object as response:</p>
 <pre><code class="lang-json">[
@@ -479,7 +479,7 @@ You will get this object as response:
 <h4 id="3-7-1-get-all-feeds-available-for-this-session">3.7.1. Get all feeds available for this session</h4>
 <ul>
 <li><code>GET /rest/feeds</code></li>
-<li>Requires <code>read_feed</code> priviledge.</li>
+<li>Requires <code>read_feed</code> privilege.</li>
 </ul>
 <p>You will get this object as response:</p>
 <pre><code class="lang-json">[
@@ -504,7 +504,7 @@ You will get this object as response:
 <h4 id="3-7-2-subscribe-to-a-new-feed">3.7.2. Subscribe to a new feed</h4>
 <ul>
 <li><code>POST /rest/feeds</code></li>
-<li>Requires <code>join_feed</code> priviledge.</li>
+<li>Requires <code>join_feed</code> privilege.</li>
 </ul>
 <p>Example request body:</p>
 <pre><code class="lang-json">{
@@ -514,13 +514,13 @@ You will get this object as response:
 <h4 id="3-7-3-unsubscribe-from-specific-feed">3.7.3 Unsubscribe from specific feed</h4>
 <ul>
 <li><code>DELETE /rest/feeds/:feed_id</code></li>
-<li>Requires <code>part_feed</code> priviledge.</li>
+<li>Requires <code>part_feed</code> privilege.</li>
 </ul>
 <hr>
 <h4 id="3-7-4-get-specific-feed-object">3.7.4. Get specific feed object</h4>
 <ul>
 <li><code>GET /rest/feeds/:feed_id</code></li>
-<li>Requires <code>read_feed</code> priviledge.</li>
+<li>Requires <code>read_feed</code> privilege.</li>
 </ul>
 <p>You will get this object as response:</p>
 <pre><code class="lang-json">{
@@ -589,7 +589,7 @@ You will get this object as response:
 <h4 id="3-7-5-get-specific-feed-items">3.7.5. Get specific feed items</h4>
 <ul>
 <li><code>GET /rest/feeds/:feed_id/items</code></li>
-<li>Requires <code>read_feed</code> priviledge.</li>
+<li>Requires <code>read_feed</code> privilege.</li>
 </ul>
 <p>You will get this object as response:</p>
 <pre><code class="lang-json">[
@@ -616,7 +616,7 @@ You will get this object as response:
 <h4 id="3-7-6-edit-feed-meta-data">3.7.6. Edit feed meta data</h4>
 <ul>
 <li><code>POST /rest/feeds/:feed_id</code></li>
-<li>Requires <code>import_feed</code> priviledge.</li>
+<li>Requires <code>import_feed</code> privilege.</li>
 </ul>
 <p>Example request body:</p>
 <pre><code class="lang-json">{
@@ -629,7 +629,7 @@ You will get this object as response:
 <h4 id="3-7-7-send-new-items-to-feed">3.7.7. Send new items to feed</h4>
 <ul>
 <li><code>POST /rest/feeds/:feed_id/items</code></li>
-<li>Requires <code>import_feed</code> priviledge.</li>
+<li>Requires <code>import_feed</code> privilege.</li>
 </ul>
 <p>Example request body:</p>
 <pre><code class="lang-json">{
@@ -670,7 +670,7 @@ You will get this object as response:
 <h4 id="3-7-8-get-single-feed-item">3.7.8. Get single feed item</h4>
 <ul>
 <li><code>GET /rest/feeds/:feed_id/items/:feed_item_id</code></li>
-<li>Requires <code>read_feed</code> priviledge.</li>
+<li>Requires <code>read_feed</code> privilege.</li>
 </ul>
 <p>You will get this object as response:</p>
 <pre><code class="lang-json">{
