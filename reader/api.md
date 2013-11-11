@@ -115,6 +115,8 @@ Example input body (with `application/json` content type):
 }    
 ```
 
+Pages use [Markdown syntax](http://daringfireball.net/projects/markdown/syntax) by default. (Actual library we are using is [marked](https://github.com/chjj/marked).)
+
 ### POST /rest/pages/:name
 
 Requires `edit pages` priviledge.
