@@ -940,7 +940,7 @@ A. Appendix
 
 ### A1. How to use CURL
 
-Save settings to `.netrc` and use `curl -n [-X method] URL`.
+Save settings to `.netrc` and use `curl -n -H 'Content-Type:application/json' -X method URL`.
 
 Example `.netrc` file:
 
