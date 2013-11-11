@@ -1,4 +1,7 @@
-all: about.html api.html
+all: about.html api.html index.html
+
+index.html: index.md
+	marked -o index.html index.md
 
 about.html: about.md
 	marked -o about.html about.md
