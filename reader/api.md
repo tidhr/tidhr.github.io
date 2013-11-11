@@ -47,6 +47,9 @@ Here is our database schema:
 
 Most of our API objects use same names.
 
+***Note:*** All passwords and access token secrets are hashed with PostgreSQL 
+`crypt()`. That's why these values cannot be fetched from the API again.
+
 ******************************************************************************
 
 

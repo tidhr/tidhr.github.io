@@ -25,6 +25,8 @@ property -- then it is the link to the resource itself.</p>
 <p>Here is our database schema:</p>
 <p><img src="http://www.tidhr.com/reader/db-schema.png" alt="Database Schema"></p>
 <p>Most of our API objects use same names.</p>
+<p><strong><em>Note:</em></strong> All passwords and access token secrets are hashed with PostgreSQL 
+<code>crypt()</code>. That&#39;s why these values cannot be fetched from the API again.</p>
 <hr>
 <h2 id="3-get-all-available-resources-from-the-rest-api">3. Get all available resources from the REST API</h2>
 <ul>
