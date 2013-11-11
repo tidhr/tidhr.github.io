@@ -12,7 +12,6 @@ Our frontend has been built by using this API.
 
 ******************************************************************************
 
-
 1. Access Tokens
 ----------------
 
@@ -35,6 +34,18 @@ These objects may contain partial child objects from other online resources if
 the child object has `$ref` property which points to an another online 
 resource. Exception is if the object itself has `$ref` as the first level 
 property -- then it is the link to the resource itself.
+
+******************************************************************************
+
+### 2.1. Internal Database Schema
+
+We use [PostgreSQL 9.3](http://www.postgresql.org/docs/9.3/static/release-9-3.html) with new JSON support.
+
+Here is our database schema:
+
+![Database Schema](http://www.tidhr.com/reader/api/db-schema.png)
+
+Most of our API objects use same names.
 
 ******************************************************************************
 
