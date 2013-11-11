@@ -3,15 +3,23 @@ About the REST API
 
 The reader is using a REST API which supports writing external apps.
 
-The base URL for the REST service is [https://reader.tidhr.com/rest](reader.tidhr.com/rest). You can use HTTPS or HTTP.
+The base URL for the REST service is 
+[https://reader.tidhr.com/rest](reader.tidhr.com/rest). You can use HTTPS or 
+HTTP.
+
+******************************************************************************
 
 Resources
 ---------
 
 Our API resources are usually JSON objects.
 
-These objects may contain partial child objects from other online resources if the child object has `$ref` property which points to an another online resource. Exception 
-is if the object itself has `$ref` as the first level property -- then it is the link to the resource itself.
+These objects may contain partial child objects from other online resources if 
+the child object has `$ref` property which points to an another online 
+resource. Exception is if the object itself has `$ref` as the first level 
+property -- then it is the link to the resource itself.
+
+******************************************************************************
 
 GET /rest
 ---------
@@ -66,6 +74,8 @@ Possible optional properties for this resource are `feeds`, `debug`, `bots`, `pr
 
 These properties are included only if your access token or authorized session has correct priviledges. Some resources are public.
 
+******************************************************************************
+
 ### GET /rest/pages
 
 Get all pages.
@@ -84,6 +94,8 @@ Sample output:
 ]
 ```
 
+******************************************************************************
+
 ### GET /rest/pages/:name
 
 Get specific page by `name` property.
@@ -97,6 +109,8 @@ Get specific page by `name` property.
    "$ref" : "http://reader.tidhr.com/rest/pages/about"
 }
 ```
+
+******************************************************************************
 
 ### POST /rest/pages
 
@@ -117,6 +131,8 @@ Example input body (with `application/json` content type):
 
 Pages use [Markdown syntax](http://daringfireball.net/projects/markdown/syntax) by default. (Actual library we are using is [marked](https://github.com/chjj/marked).)
 
+******************************************************************************
+
 ### POST /rest/pages/:name
 
 Requires `edit pages` priviledge.
@@ -134,11 +150,15 @@ Example input body (with `application/json` content type):
 }    
 ```
 
+******************************************************************************
+
 ### DELETE /rest/pages/:name
 
 Requires `edit pages` priviledge.
 
 Delete the page by `name`.
+
+******************************************************************************
 
 ### GET /rest/authorizations
 
@@ -149,6 +169,8 @@ Example output:
 []
 ```
 
+******************************************************************************
+
 ### GET /rest/authorizations/:access_token
 
 Requires `profile` priviledge.
@@ -157,44 +179,87 @@ Example output:
 ```json
 ```
 
+******************************************************************************
+
 ### DELETE /rest/authorizations/:access_token
 
+******************************************************************************
+
 ### POST /rest/authorizations
-/rest/debug
+
+******************************************************************************
+
+### GET /rest/debug
+
+******************************************************************************
 
 ### GET /rest/profile
 
+******************************************************************************
+
 ### POST /rest/profile
+
+******************************************************************************
 
 ### GET /rest/register
 
+******************************************************************************
+
 ### POST /rest/register
+
+******************************************************************************
 
 ### POST /rest/bots
 
+******************************************************************************
+
 ### GET /rest/bots
+
+******************************************************************************
 
 ### DELETE /rest/bots/:bot_id
 
+******************************************************************************
+
 ### GET /rest/bots/:bot_id
+
+******************************************************************************
 
 ### GET /rest/bots/:bot_id/feeds
 
+******************************************************************************
+
 ### POST /rest/feeds
+
+******************************************************************************
 
 ### DELETE /rest/feeds/:feed_id
 
+******************************************************************************
+
 ### GET /rest/feeds
+
+******************************************************************************
 
 ### GET /rest/feeds/:feed_id
 
+******************************************************************************
+
 ### GET /rest/feeds/:feed_id/items
+
+******************************************************************************
 
 ### POST /rest/feeds/:feed_id
 
+******************************************************************************
+
 ### POST /rest/feeds/:feed_id/items
 
+******************************************************************************
+
 ### GET /rest/feeds/:feed_id/items/:feed_item_id
+
+******************************************************************************
 
 /auth
 -----
@@ -217,9 +282,16 @@ GET output:
 }  
 ```
 
+******************************************************************************
+
 Appendix
 --------
+
+******************************************************************************
 
 ### How to use CURL
 
 Save settings to `.netrc` and use `curl -n [-X method] URL`.
+
+******************************************************************************
+

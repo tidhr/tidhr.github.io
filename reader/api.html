@@ -1,0 +1,227 @@
+<h1 id="about-the-rest-api">About the REST API</h1>
+<p>The reader is using a REST API which supports writing external apps.</p>
+<p>The base URL for the REST service is 
+<a href="reader.tidhr.com/rest"><a href="https://reader.tidhr.com/rest">https://reader.tidhr.com/rest</a></a>. You can use HTTPS or 
+HTTP.</p>
+<hr>
+<h2 id="resources">Resources</h2>
+<p>Our API resources are usually JSON objects.</p>
+<p>These objects may contain partial child objects from other online resources if 
+the child object has <code>$ref</code> property which points to an another online 
+resource. Exception is if the object itself has <code>$ref</code> as the first level 
+property -- then it is the link to the resource itself.</p>
+<hr>
+<h2 id="get-rest">GET /rest</h2>
+<p>Sample output:</p>
+<pre><code class="lang-json">{
+   &quot;profile&quot; : {
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/profile&quot;
+   },
+   &quot;feeds&quot; : {
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/feeds&quot;
+   },
+   &quot;access_token&quot; : {
+      &quot;profile&quot; : true,
+      &quot;part_feed&quot; : false,
+      &quot;edit_profile&quot; : true,
+      &quot;import_feed&quot; : true,
+      &quot;description&quot; : &quot;Bot&quot;,
+      &quot;bots&quot; : true,
+      &quot;users_id&quot; : null,
+      &quot;read_feed&quot; : true,
+      &quot;edit_pages&quot; : true,
+      &quot;join_feed&quot; : true,
+      &quot;debug&quot; : true,
+      &quot;token&quot; : &quot;6ef1b3b68a60aa2749e5f1b1c1dbef40&quot;,
+      &quot;pages&quot; : true
+   },
+   &quot;auth&quot; : {
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/auth&quot;
+   },
+   &quot;authorizations&quot; : {
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/authorizations&quot;
+   },
+   &quot;register&quot; : {
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/register&quot;
+   },
+   &quot;bots&quot; : {
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/bots&quot;
+   },
+   &quot;debug&quot; : {
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/debug&quot;
+   },
+   &quot;pages&quot; : {
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/pages&quot;
+   }
+}</code></pre>
+<p>Possible optional properties for this resource are <code>feeds</code>, <code>debug</code>, <code>bots</code>, <code>profile</code>, <code>authorizations</code>, <code>access_token</code>, <code>register</code>, <code>pages</code>, and <code>auth</code>.</p>
+<p>These properties are included only if your access token or authorized session has correct priviledges. Some resources are public.</p>
+<hr>
+<h3 id="get-rest-pages">GET /rest/pages</h3>
+<p>Get all pages.</p>
+<p>Sample output:</p>
+<pre><code class="lang-json">[
+   {
+      &quot;title&quot; : &quot;About&quot;,
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/pages/about&quot;
+   },
+   {
+      &quot;title&quot; : &quot;API&quot;,
+      &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/pages/api&quot;
+   }
+]</code></pre>
+<hr>
+<h3 id="get-rest-pages-name">GET /rest/pages/:name</h3>
+<p>Get specific page by <code>name</code> property.</p>
+<pre><code class="lang-json">{
+   &quot;content_type&quot; : &quot;text/x-markdown&quot;,
+   &quot;content&quot; : &quot;About the reader\n======\n\nThis is our NKO entry -- a RSS/Atom reader.&quot;,
+   &quot;name&quot; : &quot;about&quot;,
+   &quot;title&quot; : &quot;About&quot;,
+   &quot;$ref&quot; : &quot;http://reader.tidhr.com/rest/pages/about&quot;
+}</code></pre>
+<hr>
+<h3 id="post-rest-pages">POST /rest/pages</h3>
+<p>Requires <code>edit pages</code> priviledge.</p>
+<p>Adds new page.</p>
+<p>Example input body (with <code>application/json</code> content type):</p>
+<pre><code class="lang-json">{
+   &quot;content_type&quot; : &quot;text/x-markdown&quot;,
+   &quot;content&quot; : &quot;About the reader\n======\n\nThis is our NKO entry -- a RSS/Atom reader.&quot;,
+   &quot;name&quot; : &quot;about&quot;,
+   &quot;title&quot; : &quot;About&quot;,
+}</code></pre>
+<p>Pages use <a href="http://daringfireball.net/projects/markdown/syntax">Markdown syntax</a> by default. (Actual library we are using is <a href="https://github.com/chjj/marked">marked</a>.)</p>
+<hr>
+<h3 id="post-rest-pages-name">POST /rest/pages/:name</h3>
+<p>Requires <code>edit pages</code> priviledge.</p>
+<p>Updates the page content.</p>
+<p>Example input body (with <code>application/json</code> content type):</p>
+<pre><code class="lang-json">{
+   &quot;content_type&quot; : &quot;text/x-markdown&quot;,
+   &quot;content&quot; : &quot;About the reader\n======\n\nThis is our NKO entry -- a RSS/Atom reader.&quot;,
+   &quot;name&quot; : &quot;about&quot;,
+   &quot;title&quot; : &quot;About&quot;,
+}</code></pre>
+<hr>
+<h3 id="delete-rest-pages-name">DELETE /rest/pages/:name</h3>
+<p>Requires <code>edit pages</code> priviledge.</p>
+<p>Delete the page by <code>name</code>.</p>
+<hr>
+<h3 id="get-rest-authorizations">GET /rest/authorizations</h3>
+<p>Requires <code>profile</code> priviledge.</p>
+<p>Example output:</p>
+<pre><code class="lang-json">[]</code></pre>
+<hr>
+<h3 id="get-rest-authorizations-access_token">GET /rest/authorizations/:access_token</h3>
+<p>Requires <code>profile</code> priviledge.</p>
+<p>Example output:</p>
+<pre><code class="lang-json">```
+
+******************************************************************************
+
+### DELETE /rest/authorizations/:access_token
+
+******************************************************************************
+
+### POST /rest/authorizations
+
+******************************************************************************
+
+### GET /rest/debug
+
+******************************************************************************
+
+### GET /rest/profile
+
+******************************************************************************
+
+### POST /rest/profile
+
+******************************************************************************
+
+### GET /rest/register
+
+******************************************************************************
+
+### POST /rest/register
+
+******************************************************************************
+
+### POST /rest/bots
+
+******************************************************************************
+
+### GET /rest/bots
+
+******************************************************************************
+
+### DELETE /rest/bots/:bot_id
+
+******************************************************************************
+
+### GET /rest/bots/:bot_id
+
+******************************************************************************
+
+### GET /rest/bots/:bot_id/feeds
+
+******************************************************************************
+
+### POST /rest/feeds
+
+******************************************************************************
+
+### DELETE /rest/feeds/:feed_id
+
+******************************************************************************
+
+### GET /rest/feeds
+
+******************************************************************************
+
+### GET /rest/feeds/:feed_id
+
+******************************************************************************
+
+### GET /rest/feeds/:feed_id/items
+
+******************************************************************************
+
+### POST /rest/feeds/:feed_id
+
+******************************************************************************
+
+### POST /rest/feeds/:feed_id/items
+
+******************************************************************************
+
+### GET /rest/feeds/:feed_id/items/:feed_item_id
+
+******************************************************************************
+
+/auth
+-----
+
+Some passport related APIs are located at [https://reader.tidhr.com/auth/](reader.tidhr.com/auth/).
+
+GET output:
+
+```json
+{
+   &quot;facebook&quot; : {
+      &quot;$ref&quot; : &quot;https://reader.tidhr.com/auth/facebook&quot;
+   },
+   &quot;github&quot; : {
+      &quot;$ref&quot; : &quot;https://reader.tidhr.com/auth/github&quot;
+   },
+   &quot;local&quot; : {
+      &quot;$ref&quot; : &quot;https://reader.tidhr.com/auth/local&quot;                                                                                                                             
+   }                                                                                                                                                                             
+}</code></pre>
+<hr>
+<h2 id="appendix">Appendix</h2>
+<hr>
+<h3 id="how-to-use-curl">How to use CURL</h3>
+<p>Save settings to <code>.netrc</code> and use <code>curl -n [-X method] URL</code>.</p>
+<hr>
